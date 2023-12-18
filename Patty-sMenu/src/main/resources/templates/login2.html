@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+		
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            max-width: 800px;
+            margin: 70px auto;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.1%;
+        }
+
+        form {
+            width: 100%;
+           
+            background-color: #ffffff;
+            background: linear-gradient(to right, rgb(64, 128, 128), #acb6e5);
+            padding: 80px;
+            border-radius: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: rgb(255, 0, 128);
+            color: #ffffff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        button:hover {
+            background-color: rgb(255, 0, 128);
+        }
+
+        .img {
+            width: 40%;
+            height: 100%;
+            border-radius: 8px;
+        }
+
+        .login-link {
+            color: rgb(255, 0, 128);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img class="img" th:src="@{/green.jpeg}" alt="Registration Image">
+        <form th:action="@{/login}" method="post">
+            <h2>Login</h2>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
+            <br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <br>
+            <button type="submit">Login</button>
+            <p style="text-align: center;">Don't have an account? <a class="login-link" th:href="@{/add}">Register</a></p>
+               <p style="text-align: center;">Forgot Password? <a class="login-link" th:href="@{/forgotpass}">Forgot Password</a></p>
+        </form>
+    </div>
+       <button class="add-category-button" onclick="redirectToSearch()">Back</button>
+
+<script>
+    function redirectToSearch() {
+        window.location.href = '/';
+    }
+</script>
+
+</body>
+</html>

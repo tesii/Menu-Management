@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>File Download</title>
+</head>
+<body>
+    <h2>File Download</h2>
+
+    <a th:href="@{'/download/' + ${fileName}}" download="true">Download File</a>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Category Details</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            max-width: 800px;
+            margin: 20px auto;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        form {
+            width: 48%;
+            background-color: #fff;
+            background: linear-gradient(to right, rgb(64, 128, 128), #acb6e5);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .image-container {
+            width: 70%;
+            margin: auto;
+        }
+
+        .image-container img {
+            width: 50%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .login-link {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+	
+
+	<h1>Category Details </h1>
+    <div class="container">
+        <form th:action="@{/saveCategory}" method="post" th:object="${category}">
+			
+            
+            
+            
+            <label for="name">Category Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+
+
+            <button type="submit">Add Category</button>
+          
+
+        </form>
+    </div>
+             <button class="add-category-button" onclick="redirectToSearch()">Back</button>
+
+<script>
+    function redirectToSearch() {
+        window.location.href = '/login';
+    }
+</script>
+</body>
+</html>

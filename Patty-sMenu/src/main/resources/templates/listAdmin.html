@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin List</title>
+    <!-- Add your styles or use an external stylesheet here -->
+</head>
+
+<body>
+
+    <h2>Admin List</h2>
+
+    <table border="1">
+        <thead>
+            <tr>
+             
+                <th>Email</th>
+                <th>Name</th>
+                <th>Phone Number</th>
+                  <th>Password</th>
+                  <th>Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Use Thymeleaf each loop to iterate through the list of Admin objects -->
+            <tr th:each="admin : ${admins}">
+              
+                <td th:text="${admin.email}"></td>
+                <td th:text="${admin.name}"></td>
+                <td th:text="${admin.phone_number}"></td>
+                 <td th:text="${admin.password}"></td>
+                 <td th:text="${admin.role}"></td>
+            </tr>
+        </tbody>
+    </table>
+ <a th:href="@{/login}">Back</a>
+</body>
+
+</html>

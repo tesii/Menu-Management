@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap; /* Allow content to wrap to the next line */
+        }
+
+        h1 {
+            color: rgb(64, 0, 0);
+            margin-bottom: 10px;
+        }
+h2 {
+	color: black;
+}
+      nav a {
+    display: block;
+    color: rgb(255, 255, 255);
+    text-align: center; /* Center text within each link */
+    padding: 24px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+
+
+        a.button {
+            background-color: rgb(255, 0, 128);
+           
+            color: white;
+            text-decoration: none;
+            padding: 20px;
+          margin: 30px 100px; /* Add margin for spacing between buttons */
+            font-weight: bold;
+            display: block;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        a.button:hover {
+            background-color: #ff5c7a; /* Adjust the hover color */
+        }
+
+        .content {
+            padding: 150px;
+            margin: 80px;
+            display: flex;
+            
+            flex-direction: column;
+            align-items: flex;
+            border-top-right-radius: 10px; /* Add border-radius for rounded corners */
+            border-bottom-right-radius: 15px;
+            box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2); /* Add box-shadow for a subtle effect */
+            flex-grow: 1;
+        }
+
+        .left-links {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            display: flex;
+            align-items: center;
+        }
+
+        a.left-link {
+            margin-right: 20px; /* Adjust margin for spacing between links */
+            color: white;
+            text-decoration: none;
+        }
+
+        a.left-link:hover {
+            text-decoration: underline;
+        }
+    
+    </style>
+
+</head>
+<body>
+
+<nav>
+    <h1><b>Dashboard</b></h1>
+    
+    <a th:href="@{/addCategory}" class="button">Manage Categories</a>
+    <a th:href="@{/addItem}" class="button">Manage Items</a>
+    <a th:href="@{/add}" class="button">Manage Users</a>
+ 
+ 
+</nav>
+ 
+<div class="content">
+
+
+
+    <h1>Patty's Menu Management System</h1>
+  <h2><a th:href="@{/listCategories}" class="button">View Categories</a></h2>  
+   <h2> <a th:href="@{/listItem}" class="button">View Items</a></h2>
+</div>
+
+<script>
+    function confirmLogout() {
+        var confirmLogout = confirm("Are you sure you want to logout from your account?");
+        if (confirmLogout) {
+            // Perform logout action
+            window.location.href = "/login";
+        }
+    }
+</script>
+
+        <a th:href="@{/passwordchange}" class="button">Change Password</a>
+   <a href="#" class="button" onclick="confirmLogout()">Logout</a>
+
+</body>
+</html>

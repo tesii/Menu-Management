@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Item</title>
+    <!-- Add your CSS styles if needed -->
+</head>
+<body>
+    <h2>Delete Item</h2>
+
+    <p>Are you sure you want to delete the item with the following details?</p>
+
+    <p>
+        <strong>Item Name:</strong> <span th:text="${item.item_name}"></span><br>
+        <strong>Item Price:</strong> <span th:text="${item.item_price}"></span><br>
+        <strong>Description:</strong> <span th:text="${item.description}"></span><br>
+        <!-- Add other fields as needed -->
+    </p>
+
+    <form th:action="@{/delete/{item_id}}" th:object="${item}" method="post">
+        <button type="submit">Delete Item</button>
+    </form>
+    
+    <a th:href="@{/listItem}">Cancel and Back to Item List</a>
+</body>
+</html>

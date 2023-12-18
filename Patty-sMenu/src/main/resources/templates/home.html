@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patty's Menu Management System</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('fruit.jpeg');
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: white;
+        }
+
+     
+
+nav {
+    background-color: rgb(255, 0, 128);
+    overflow: hidden;
+    width: 100%;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    margin: 0 auto;
+    color: white;
+    display: flex; /* Use flexbox to display items horizontally */
+    justify-content: space-around; /* Add space around items for better spacing */
+}
+
+nav a {
+    display: block;
+    color: rgb(255, 255, 255);
+    text-align: center; /* Center text within each link */
+    padding: 24px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: rgba(192, 192, 192, 0.8);
+    color: rgb(0, 0, 0);
+}
+
+
+        h1 {
+            color: rgb(255, 255, 255);
+            text-align: left;
+            margin-bottom: 0;
+        }
+
+        .hero-section {
+            padding: 200px;
+            background-color: rgb(255, 255, 255);
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            margin: 150px auto;
+        }
+
+        .hero-section img {
+            width: 60%;
+            max-width: 200px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            color: black;
+        }
+
+        .hero-section p {
+            font-size: 18px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+ 
+
+    <nav>
+		<h1>Patty's menu management system</h1>
+        
+        <a th:href="@{/add}">Registration</a>
+        <a th:href="@{/login}">Login</a>
+        <a th:href="@{/forgotpass}">Forgot Password</a>
+    </nav>
+
+    <div class="hero-section">
+        <img src="pizza.jpeg" alt="Patty's Menu Management System">
+       <b><p>Patty's Menu Management System is your go-to platform for managing and organizing menus with ease. Whether you're a restaurant owner or a menu enthusiast, our system provides a seamless experience for creating, updating, and showcasing your delicious offerings.</p></b> 
+    </div>
+</body>
+</html>

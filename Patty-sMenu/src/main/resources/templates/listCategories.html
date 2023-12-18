@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Category Details</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            max-width: 800px;
+            margin: 20px auto;
+            align-items: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #e0e0e0;
+        }
+             button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 20px;
+          
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+	
+	   <h2>Category</h2>
+	      <button class="add-category-button" onclick="redirectToAddCategory()">+</button>
+    <div class="container">
+     
+        <table border="1">
+      
+            <tbody>
+				 <div th:if="${successMessage}" class="alert alert-success" role="alert">
+        <p th:text="${successMessage}"></p>
+    </div>
+    <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+        <p th:text="${errorMessage}"></p>
+    </div>
+
+    <div class="container">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="category, rowStat : ${categories}" th:class="${rowStat.odd} ? 'odd' : ''">
+                    <td th:text="${category.name}">Name</td>
+                    <td>
+                        <a th:href="@{/editCategory/{category_id}(category_id=${category.category_id})}" class="btn btn-primary">Edit</a>
+                        <span> | </span>
+                         <a th:href="@{/deleteCategory/{category_id}(category_id=${category.category_id})}" class="btn btn-danger">Delete</a>
+                    </td>
+                
+                </tr>
+                    
+            </tbody>
+          
+        </table>
+         
+    </div>
+       <script>
+        function redirectToAddCategory() {
+            window.location.href = '/addCategory';  // Replace with your actual path
+        }
+    </script>
+     <a th:href="@{/login}">Back</a>
+</body>
+</html>

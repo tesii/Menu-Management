@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Menus with Image Upload</title>
+    <!-- Include Font Awesome CSS (You may need to adjust the path based on your project setup) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: rgb(255, 255, 255);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .menu-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            max-width: 800px;
+            overflow: auto;
+            margin: 20px auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #e57373; /* Pink color for borders */
+            padding: 12px;
+            text-align: left;
+            background-color: #fce4ec; /* Light pink background color */
+        }
+
+        th {
+            background-color: #f48fb1; /* Darker pink for header */
+            color: white;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #fce4ec; /* Light pink for even rows */
+        }
+
+        tbody tr:hover {
+            background-color: rgb(255, 0, 128); /* Hover color for rows */
+            color: white;
+        }
+
+        .fa-icon {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+
+        .add-category-button {
+            background-color: rgb(255, 0, 128);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        .add-category-button:hover {
+            background-color: rgb(0, 0, 0);
+        }
+
+        .home {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30vh; /* Use the full height of the viewport */
+        }
+
+        .home h1 {
+            font-size: 36px; /* Adjust the size as needed */
+            color: rgb(255, 255, 0); /* Text color */
+            background-color: #333; /* Background color */
+            padding: 20px; /* Padding around the text */
+            border-radius: 300px; /* Rounded corners */
+            width: 30%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Box shadow for a cool effect */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="home">
+        <h1>Patty's<br>Menu Management</h1>
+    </div>
+
+    <button class="add-category-button" onclick="redirectToSearch()">Search</button>
+
+<script>
+    function redirectToSearch() {
+        window.location.href = '/search';
+    }
+</script>
+
+
+
+
+   <table>
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Item Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                
+                
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="item, rowStat : ${listItems}" th:class="${rowStat.odd}? 'odd' : ''">
+				  <td th:if="${item.category != null}" th:text="${item.category.name}"></td>
+                <td th:text="${item.item_name}"></td>
+                <td th:text="'$' + ${item.item_price}"></td>
+                <td th:text="${item.description}"></td>
+               
+	
+
+                <td>
+                   <a th:href="@{'/editItem/' + ${item.item_id}}" class="btn btn-primary">Edit</a>
+
+                    <span> | </span>
+                    <a th:href="@{'/deleteItem/' + ${item.item_id}}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button class="add-category-button" onclick="redirectToAddItem()">+</button>
+
+<footer>
+        <div class="row col-sm-10">
+            <div class="col-sm-2">
+                Total Rows: [[${totalItems}]]
+            </div>
+            <div class="col-sm-1">
+                <!-- Display page numbers -->
+                <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                    <span th:if="${currentPage != i}">
+                        <a th:href="@{'/listItem/' + ${i}}">[[${i}]]</a>
+                    </span>
+                    <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+                </span>
+            </div>
+            <div class="col-sm-1">
+                <!-- Previous page link -->
+                <span th:if="${currentPage > 1}">
+                    <a th:href="@{'/listItem/' + ${currentPage - 1}}">Previous</a>
+                </span>
+                <span th:unless="${currentPage > 1}">Previous</span>
+            </div>
+            <div class="col-sm-1">
+                <!-- Next page link -->
+                <span th:if="${currentPage < totalPages}">
+                    <a th:href="@{'/listItem/' + ${currentPage + 1}}">Next</a>
+                </span>
+                <span th:unless="${currentPage < totalPages}">Next</span>
+            </div>
+            <div class="col-sm-1">
+                <!-- Last page link -->
+                <span th:if="${currentPage < totalPages}">
+                    <a th:href="@{'/listItem/' + ${totalPages}}">Last</a>
+                </span>
+                <span th:unless="${currentPage < totalPages}">Last</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function redirectToAddItem() {
+            window.location.href = '/addItem'; // Replace with your actual path
+        }
+    </script>
+ 
+ 
+    <button class="add-category-button" onclick="redirectToSearch()">Back</button>
+
+<script>
+    function redirectToSearch() {
+        window.location.href = '/';
+    }
+</script>
+
+</body>
+</html>

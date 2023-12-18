@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: rgb(255, 255, 255);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .menu-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            max-width: 800px;
+            overflow: auto;
+            margin: 20px auto;
+        }
+
+        .menu-item {
+            border: 1px solid #ddd;
+            padding: 12px;
+            margin: 10px;
+            text-align: left;
+            width: 200px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h2>Search Results</h2>
+
+    <!-- Iterate over search results and display each item as a menu item -->
+    <div class="menu-container">
+        <div th:each="item : ${searchResults}" class="menu-item">
+            <h3 th:text="${item.item_name}"></h3>
+            <p th:text="${item.description}"></p>
+            <p th:text="'Price: $' + ${item.item_price}"></p>
+            <p th:text="'Category: ' + ${item.category.name}"></p>
+           
+        </div>
+    </div>
+         <button class="add-category-button" onclick="redirectToSearch()">Back</button>
+
+<script>
+    function redirectToSearch() {
+        window.location.href = '/listItem';
+    }
+</script>
+</body>
+</html>

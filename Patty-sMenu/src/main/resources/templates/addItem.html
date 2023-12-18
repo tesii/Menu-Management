@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Add your head content here -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            max-width: 800px;
+            margin: 20px auto;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        form {
+            width: 48%;
+            background-color: #ffffff;
+            background: linear-gradient(to right, rgb(64, 128, 128), #acb6e5);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        form:hover {
+            transform: scale(1.02);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .image-container {
+            width: 70%;
+            margin: auto;
+        }
+
+        .image-container img {
+            width: 50%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .file-input {
+            margin-top: 10px;
+        }
+
+        .login-link {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <h2>Add Item</h2>
+
+
+
+		  <form th:action="@{/saveItem}" method="post" th:object="${item}" enctype="multipart/form-data">
+			  
+        <label for="item_name">Item Name:</label>
+        <input type="text" th:field="*{item_name}" required>
+
+        <label for="description">Description:</label>
+        <input type="text" th:field="*{description}" required>
+
+        <label for="item_price">Item Price:</label>
+        <input type="number" th:field="*{item_price}" required>
+
+		 <!-- Add this snippet to your addItem.html template -->
+		<div class="mb-3">
+		    <label for="category">Select Category:</label>
+		    <select id="category" name="category.category_id" class="form-control" th:field="*{category}">
+		        <option th:each="category : ${categories}" th:value="${category.category_id}" th:text="${category.name}"></option>
+		    </select>
+		</div>
+		
+	
+
+
+
+  <button type="submit">Add Item</button>
+    </form>
+
+</div>
+
+         <button class="add-category-button" onclick="redirectToSearch()">Back</button>
+
+<script>
+    function redirectToSearch() {
+        window.location.href = '/login';
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+   body {
+  background-color: white;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+
+        h2 {
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            max-width: 800px;
+            margin: 20px auto;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+    form {
+		  background: linear-gradient(to right, rgb(64, 128, 128), #acb6e5);
+    width: 40%;
+    margin: 70px auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+   button {
+    background-color: #FF0080;
+    color: #ffffff;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #FF0055;
+}
+
+
+        .image-container {
+            width: 70%;
+            margin: auto;
+        }
+
+        .image-container img {
+            width: 50%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .login-link {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+ 
+ <script>
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+        function validateForm() {
+            var email = document.getElementById('email').value;
+            var name = document.getElementById('name').value;
+            var phoneNumber = document.getElementById('phone_number').value;
+            var password = document.getElementById('password').value;
+
+            // Validate email format
+            if (!emailRegex.test(email)) {
+                alert('Invalid email format');
+                return false;
+            }
+
+            // Validate password strength (you can add more checks if needed)
+            if (password.length < 8) {
+                alert('Password must be at least 8 characters long');
+                return false;
+            }
+
+            // If all validations pass, submit the form
+            return true;
+        }
+    </script>
+
+
+</head>
+<body>
+    <div class="container">
+        <form th:action="@{/saveAdmin}" method="post" th:object="${admin}" onsubmit="return validateForm();">
+            <h2>Registration Form</h2>
+            
+     <label for="email">Email:</label>
+	<input type="text" id="email" name="email" required th:pattern="${emailRegex}" title="Please enter a valid email address">
+	<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+
+            <label for="phone_number">Phone Number:</label>
+			 <input type="text" id="phone_number" name="phone_number" required pattern="^(078|079)\d{7}$" title="Please use a valid format starting with 078 or 079 followed by 8 digits.">
+            <span th:if="${#fields.hasErrors('phone_number')}" th:errors="*{phone_number}"></span>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="role">Role:</label>
+            <select id="role" name="role" required>
+                <option value="ROLE_ADMIN">Admin</option>
+                <option value="ROLE_MANAGER">Manager</option>
+                <option value="ROLE_USER">User</option>
+            </select>
+
+            <button type="submit">Register</button>
+            <p style="text-align: center;">Already have an account? <a class="login-link" th:href="@{/login}">Login</a></p>
+        </form>
+        <div class="image-container">
+            <img th:src="@{/blk.jpeg}" alt="Registration Image">
+        </div>
+    </div>
+    
+            <button class="add-category-button" onclick="redirectToSearch()">Back</button>
+
+<script>
+    function redirectToSearch() {
+        window.location.href = '/';
+    }
+</script>
+</body>
+</html>

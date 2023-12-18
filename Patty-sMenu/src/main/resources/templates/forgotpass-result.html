@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forgot Password Result</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        p {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        strong {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Display the email entered -->
+    <p>Email Entered: <strong th:text="${emailEntered}"></strong></p>
+
+    <!-- Display the corresponding password -->
+    <p>Password: <strong th:text="${password}"></strong></p>
+
+       <button class="add-category-button" onclick="redirectToSearch()">Back</button>
+
+<script>
+    function redirectToSearch() {
+        window.location.href = '/login';
+    }
+</script>
+</body>
+</html>
