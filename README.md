@@ -5,9 +5,11 @@ Expected Outcomes:
 *Efficient management of menu items, categories, and users.
 *User-friendly interface for administrators to perform CRUD operations on menu items and categories.
 *Improved organization and presentation of the patty’s  restaurant menu.
+
 ii. Project Plan:
 Scope:
 ======
+
 · Implement CRUD operations for menu items and categories.
 · Secure login for administrators and users.
 ·  Database design and setup.
@@ -15,6 +17,7 @@ Scope:
 ·  Frontend development.
 ·  Testing and debugging.
 ·  Documentation and finalization.
+
 iv. Database Schema:
 ====================
 [Provide a database schema diagram detailing tables (admin, category, item and changepassword) and relationships between them.]
