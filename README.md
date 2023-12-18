@@ -21,6 +21,7 @@ iv. Database Schema:
 
 
 Functionality:
+==============
 · Add new category: [Steps]
 · Update existing category: [Steps]
 · Delete category: [Steps]
@@ -30,12 +31,11 @@ Functionality:
 · Delete item: [Steps]
 
 Registration
-——————
+============
 
 
 Login
-———
-
+=====
 Architecture:
 · Backend: [ backend architecture: Spring Boot]
 · Frontend: [ frontend framework: Tymeleaf, javascript]
