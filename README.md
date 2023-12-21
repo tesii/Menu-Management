@@ -56,3 +56,6 @@ relationship between items table and category table
 ![image](https://github.com/tesii/Menu-Management/assets/130172829/50a5c81b-7d51-4793-a64b-e9e45566f9c9)
 
 
+relationship between admin table and changepassword
+relationship is between email from changepassword and email from admin and old password from changepassword and password from admin table
+![image](https://github.com/tesii/Menu-Management/assets/130172829/4c3c053f-46f0-49bf-9576-df8f4b845534)
